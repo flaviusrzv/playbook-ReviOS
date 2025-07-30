@@ -1,5 +1,9 @@
 name: Advanced Archive and Release
 
+permissions:
+  contents: write
+  packages: write
+
 on:
   # Trigger automat pentru modificări
   push:
@@ -380,7 +384,7 @@ jobs:
           echo "is_prerelease=$IS_PRERELEASE" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ needs.build-and-release.outputs.version }}
           name: Revi Playbook v${{ needs.build-and-release.outputs.version }}
